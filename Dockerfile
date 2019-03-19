@@ -16,4 +16,6 @@ USER jovyan
 RUN python3 -m pip install pyjnius
 
 USER root
-CMD ["lab", "--allow-root"]
+COPY entry.sh /usr/bin
+RUN mkdir /home/jovyan/.irods
+ENTRYPOINT ["bash", "/usr/bin/entry.sh"]
